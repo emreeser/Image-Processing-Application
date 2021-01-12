@@ -12,6 +12,9 @@ import skimage.segmentation as seg
 from skimage.segmentation import active_contour
 import skimage.color as color
 from mpl_toolkits.axes_grid1 import ImageGrid
+
+#using Tkinter 
+
 app = Tk()
 app.title('Image Processing Application')
 app.geometry('1200x800')
@@ -67,7 +70,7 @@ open_button2.place(x=30, y=190)
 
 
 
-###################################################################
+################# filters
 
 def do_filter():
     if filvar.get() == 'prewitt':
@@ -204,7 +207,7 @@ filter_menu.place(x=360, y=70)
 f_menu_btn = Button(app, text='Show', command=do_filter,fg='red')
 f_menu_btn.place(x=380, y=120)
 
-################################################
+############################ histogram equalization
 def histogram_equ():
     if image_text.get() != '':
         image = cv2.imread(image_text.get(),0)
@@ -693,7 +696,8 @@ vd_label = Label(app, text="Video Edge Detection", font="Times, 11",fg='green')
 vd_label.place(x=20, y=285)            
 vd_btn = Button(app, text='Show', command=video_edge,fg='green')
 vd_btn.place(x=80, y=330)
-###### my filter 
+
+###### my filter for social media
 def myfilter():
     if image_text.get() != '':
         image = cv2.imread(image_text.get())
@@ -713,6 +717,7 @@ myf_btn.place(x=884, y=295)
 
 
 ####after geometrical transforms,  for second morphological process function
+
 def in_mor(image):
     if morvar.get() == 'Opening':
         kernel = np.ones((5, 5), np.uint8)
@@ -797,6 +802,7 @@ def in_mor(image):
 
 
 ##### after geometrical transforms, second filter function
+
 def in_filt(image):
     if filvar.get() == 'prewitt':
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -881,4 +887,3 @@ def in_filt(image):
 
 
 app.mainloop()
-print(" ")
